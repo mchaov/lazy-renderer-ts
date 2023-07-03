@@ -1,0 +1,17 @@
+.box {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  margin: 1px 0;
+  border: 1px solid red;
+  padding: 5px;
+  min-height: 30px;
+}
+
+.box-contents {
+  display: none;
+}
+
+.box.isVisible .box-contents {
+  display: block;
+}
