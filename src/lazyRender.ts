@@ -1,4 +1,4 @@
-import { Renderer } from "../shared/shared.js";
+import { Renderer } from "./shared/renderer.js";
 
 /**
  * Setup globals for the demo's purposes
