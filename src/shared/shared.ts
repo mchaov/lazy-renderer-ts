@@ -20,6 +20,14 @@ export type VisibilityChangeCb = (e: IntersectionObserverEntry) => void
 /**
  * Renderer
  * This class should be instantiated for every viewport that we would like to control.
+ * There could be multiple instances for one viewport. As with everything, performance impact
+ * should be measured.
+ * @example
+    const observer = new Renderer()
+    observer.registerDom(
+        htmlElementReference, 
+        intersection => entry.isIntersecting ? "Yes" : "No"
+    )
  */
 export class Renderer {
 
@@ -29,7 +37,8 @@ export class Renderer {
 
     /**
      * Constructor
-     * @param {IntersectionObserverInit} props default options for the IntersectionObserver constructor 
+     * @param {IntersectionObserverInit} props default options for the IntersectionObserver constructor
+     * @returns {Renderer} renderer instance
      */
     constructor(props: IntersectionObserverInit = {}) {
 
@@ -39,7 +48,6 @@ export class Renderer {
                 ...defaultsOptions, ...props                            // merge defaults with user provided options
             }
         );
-
     }
 
     /**
