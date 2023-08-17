@@ -13,3 +13,29 @@ The article linked above dives deep into the innovative design pattern of lazy r
 - **Best Practices & Considerations**: The journey of implementing lazy rendering isn't without its challenges. The article rounds off with invaluable best practices, potential challenges, and key considerations, emphasizing the delicate balance between performance enhancement and added complexity.
 
 Quick example could be found in this [in this codepen](https://codepen.io/Mchaov/pen/PoxKbPQ).
+
+Sneak peek:
+
+```typescript
+import { Renderer } from "./renderer"
+ 
+/**
+ * intersectionHandler
+ * Function is called each time the viewport detetcts a change
+ * @param {IntersectionObserverEntry} entry
+ * @void
+ */
+function intersectionHandler(entry: IntersectionObserverEntry) {    // takes an entry and processes it
+    if (entry.isIntersecting) {                                     // do something if content is visible
+        entry.target.classList.add("isVisible")
+    } else {                                                        // do something if content is not visible
+        entry.target.classList.remove("isVisible")
+    }
+}
+ 
+const observer = new Renderer()                                     // bootstrap an observer
+ 
+const boxes = document.querySelectorAll(".box")                     // get all of the boxes we wish to observe
+ 
+boxes.forEach(x => observer.registerDom(x, intersectionHandler))    // register all of the boxes with the observer
+```
